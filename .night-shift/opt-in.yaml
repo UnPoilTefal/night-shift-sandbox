@@ -1,0 +1,7 @@
+version: 1
+trustLevel:
+  ticketsPerPass: 1
+  pullRequests: draft
+trustedAuthors: [UnPoilTefal]
+forbiddenZones:
+  - ".github/**"
