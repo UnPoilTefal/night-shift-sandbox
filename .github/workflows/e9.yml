@@ -1,0 +1,14 @@
+name: e9-preuve
+on:
+  push:
+    branches: ["agent/**"]
+permissions:
+  contents: write
+jobs:
+  preuve:
+    runs-on: ubuntu-latest
+    steps:
+      - name: écrire avec l'identité de la CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST repos/${{ github.repository }}/git/refs -f ref=refs/heads/e9-preuve -f sha=${{ github.sha }}
