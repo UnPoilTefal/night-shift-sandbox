@@ -1,0 +1,17 @@
+# CI de l'épreuve des barrières (docs/proof.md de night-shift) : rouge tant
+# qu'un fichier ci-red est présent, pour que le cas E10 ait un second tour.
+# Aucun secret : les branches agent/ y ont accès.
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: ci-red absent
+        run: |
+          if [ -e ci-red ]; then echo "FAIL : ci-red est présent"; exit 1; fi
